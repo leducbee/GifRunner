@@ -22,7 +22,7 @@ public class MainApp extends Application {
 		
 		// detect screen
 		Screen runningScreen = Screen.getPrimary();
-		Rectangle2D screenBound = new Rectangle2D(0, 0, 0, 0);
+		Rectangle2D screenBound = runningScreen.getVisualBounds();
 		List<Screen> listScreen = Screen.getScreens().stream().filter(e -> !e.equals(Screen.getPrimary()))
 				.collect(Collectors.toList());
 		if (!listScreen.isEmpty()) {
@@ -32,17 +32,17 @@ public class MainApp extends Application {
 		// set coordinates stage
 		if (runningScreen != null) {
 			screenBound = runningScreen.getVisualBounds();
-			stage.setX(screenBound.getMinX());
-			stage.setY(screenBound.getMinY());
 		}
+		stage.setX(screenBound.getMinX());
+		stage.setY(screenBound.getMinY());
 		
 		// add element
 		final Rectangle2D finalScreenBound = screenBound;
 		List<ImageView> listImageView = new ArrayList<>();
-		listImageView.add(new ImageView(new Image("monkey-eat-banana-001.gif")));
-		listImageView.add(new ImageView(new Image("monkey-eat-banana-002.gif")));
-		listImageView.add(new ImageView(new Image("monkey-eat-banana-003.gif")));
-		listImageView.add(new ImageView(new Image("monkey-eat-banana-004.gif")));
+		listImageView.add(new ImageView(new Image("images/monkey-eat-banana-001.gif")));
+		listImageView.add(new ImageView(new Image("images/monkey-eat-banana-002.gif")));
+		listImageView.add(new ImageView(new Image("images/monkey-eat-banana-003.gif")));
+		listImageView.add(new ImageView(new Image("images/monkey-eat-banana-004.gif")));
 		
 		listImageView.forEach(e -> {
 			e.setFitWidth(finalScreenBound.getWidth()/2);
